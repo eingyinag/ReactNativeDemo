@@ -9,45 +9,33 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Navigator
 } from 'react-native';
+
+var LoginView = require("./LoginView");
 
 class SignIn_Demo extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
+       <Navigator
+          style={styles.navigationContainer}
+          initialRoute={{title: "Navigation Example", component: LoginView}}
+          renderScene={this.renderScene.bind(this)}
+        />
     );
+  }
+
+  renderScene (route, navigator) {
+    return <route.component navigator={navigator}/>
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  navigationContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    },
+  
 });
 
 AppRegistry.registerComponent('SignIn_Demo', () => SignIn_Demo);
