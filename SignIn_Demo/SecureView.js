@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 var WeatherProject = require("./WeatherProject");
-
+var image = require('./image/weatherImage.png');
 class SecureView extends Component {
 	constructor(props) {
     		super(props);
@@ -20,18 +20,20 @@ class SecureView extends Component {
     	}
 
     render() {
-    	return (
+        return (
     	<View style={styles.container}>
+    	    <Image source={image}
+    	           resizeMode='cover'
+                   style={styles.backdrop}>
             <View >
                 <Text style={styles.heading}>
                     Welcome {this.props.username}!
                 </Text>
-                <Image source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}/>
-
             </View>
             <View>
                 <WeatherProject/>
             </View>
+            </Image>
         </View>
         );
     }
@@ -48,8 +50,8 @@ BackAndroid.addEventListener('hardwareBackPress', () => {
 
 const styles = StyleSheet.create({
   container: {
-        padding: 50,
-        marginTop: 65,
+//        padding: 10,
+//        marginTop: 5,
         alignItems: "center"
     },
     heading: {
@@ -57,6 +59,10 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: "center",
         color: "#656565"
+    },
+    stretch: {
+        flex: 1,
+        flexDirection: 'column',
     }
 });
 

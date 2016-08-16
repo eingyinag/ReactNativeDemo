@@ -14,13 +14,17 @@ import {
 } from 'react-native';
 
 var LoginView = require("./LoginView");
+var SwitchAndroid = require("./switch.android");
+var CrossPlatform = require("./CrossPlatform");
+var GeolocationExample = require("./GeolocationExample");
+var PanResponderExample = require("./PanResponderExample");
 
 class SignIn_Demo extends Component {
   render() {
     return (
        <Navigator
           style={styles.navigationContainer}
-          initialRoute={{title: "Navigation Example", component: LoginView}}
+          initialRoute={{title: "Navigation Example", component: PanResponderExample}}
           renderScene={this.renderScene.bind(this)}
         />
     );

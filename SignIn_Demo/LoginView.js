@@ -7,7 +7,8 @@ import {
 	TextInput,
 	Navigator,
     TouchableHighlight,
-    View
+    View,
+    Alert,
 } from 'react-native';
 
 var SecureView = require("./SecureView");
@@ -20,6 +21,7 @@ class LoginView extends Component {
         this.state = {
             username: "",
             password: "",
+            nextField: "",
         };
     }
 
@@ -31,18 +33,25 @@ class LoginView extends Component {
                 </Text>
                 <View>
                     <TextInput
+                        ref="1"
                         placeholder="Username"
-                        onChange={(event) => this.setState({username: event.nativeEvent.text})}
+                        returnKeyType="next"
+//                        onChange={(event) => this.setState({username: event.nativeEvent.text})}
+                        onSubmitEditing={(event) => this.onSubmitName(event)}
                         style={styles.formInput}
-                        value={this.state.username} />
+                        /*value={this.state.username}*/ />
                     <TextInput
+                        ref="2"
                         placeholder="Password"
                         secureTextEntry={true}
                         onChange={(event) => this.setState({password: event.nativeEvent.text})}
                         style={styles.formInput}
                         value={this.state.password} />
-                    <TouchableHighlight onPress={(this.onSubmitPressed.bind(this))} style={styles.button}>
-                        <Text style={styles.buttonText}>Submit</Text>
+                    <TouchableHighlight
+                        ref="touchBtn"
+                        onPress={(this.onSubmitPressed.bind(this))} style={styles.button}
+                        onLongPress={this._onLongPress}>
+                            <Text style={styles.buttonText}>Submit</Text>
                     </TouchableHighlight>
                 </View>
             </View>
@@ -57,6 +66,21 @@ class LoginView extends Component {
         });
     }
 
+    onSubmitName(event) {
+        this.setState({username: event.nativeEvent.text});
+        this.refs[2].focus();
+    }
+
+    _onLongPress() {
+        Alert.alert(
+                    'LongPress Alert!',
+                    'Don\'t Press Long Time!',
+                    [
+                      {text: 'OK', onPress: () => console.log('OK Pressed!')},
+//                      {text: 'OK', onPress: () => {this.onSubmitPressed()}},
+                    ]
+                   );
+    }
 };
 
 var styles = StyleSheet.create({
