@@ -30,7 +30,12 @@ class SignIn_Demo extends Component {
 
   render() {
     return (
-       // Render something here
+       <Navigator
+          style={styles.navigationContainer}
+          initialRoute={{title: "Navigation Example", component: LoginView}}
+          renderScene={this.renderScene.bind(this)}
+        />
+
     );
   }
 
