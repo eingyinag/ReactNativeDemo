@@ -11,17 +11,17 @@ import {
      ListView
 } from 'react-native';
 
-var cordova = require('rncp');
+var cordova = require('react-native-cordova-plugin');
 window.cordova = cordova;
 window.react = React;
 
 var myApp = React.createClass({
-    getInitialState: function() {
+  /*  getInitialState: function() {
         return {
             result: '',
             status: 'Initialized'
         };
-    },
+    },*/
     getPlugins: function() {
         var self = this;
         var log = function(status) {
@@ -36,7 +36,8 @@ var myApp = React.createClass({
             rowHasChanged: (r1, r2) => r1 !== r2
         });
         //return ds.cloneWithRows(['row 1', 'row 2']);
-        return ds.cloneWithRows([{
+        return ds.cloneWithRows([
+          /*{
             name: 'Device (cordova-plugin-device)',
             fn: function() {
                 cordova.device.getInfo(log('success'), log('fail'));
@@ -51,14 +52,14 @@ var myApp = React.createClass({
             fn: function() {
                 cordova.navigator.contacts.pickContact(log('success'), log('fail'));
             }
-        }, {
+        }, */{
             name: 'Take Picture (cordova-plugin-camera)',
             fn: function() {
                 cordova.navigator.camera.getPicture(log('success'), log('fail'), {
                     saveToPhotoAlbum: true,
                 });
             }
-        }, {
+        }/*, {
             name: 'Barcode Scanner (phonegap-plugin-barcodescanner)',
             fn: function() {
                 cordova.cordova.plugins.barcodeScanner.scan(log('success'), log('fail'));
@@ -80,7 +81,7 @@ var myApp = React.createClass({
             fn: function() {
                 cordova.navigator.globalization.getPreferredLanguage(log('success'), log('fail'));
             }
-        }])
+        }*/])
     },
 
     renderRow: function(plugin) {
@@ -102,7 +103,7 @@ var myApp = React.createClass({
     },
 });
 
-AppRegistry.registerComponent('myApp', () => myApp);
+//AppRegistry.registerComponent('myApp', () => myApp);
 
 
 var styles = {

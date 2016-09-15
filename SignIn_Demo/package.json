@@ -7,6 +7,10 @@
   },
   "dependencies": {
     "react": "15.2.1",
-    "react-native": "0.30.0"
+    "react-native": "0.30.0",
+    "react-native-cordova-plugin": "^1.0.1"
+  },
+  "devDependencies": {
+    "react-transform-hmr": "^1.0.4"
   }
 }

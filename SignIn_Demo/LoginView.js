@@ -11,8 +11,9 @@ import {
     Alert,
 } from 'react-native';
 
-var SecureView = require("./SecureView");
 //import SecureView from './SecureView';
+
+var SecureView = require("./SecureView");
 
 class LoginView extends Component {
 
@@ -36,7 +37,7 @@ class LoginView extends Component {
                         ref="1"
                         placeholder="Username"
                         returnKeyType="next"
-//                        onChange={(event) => this.setState({username: event.nativeEvent.text})}
+//                      onChange={(event) => this.setState({username: event.nativeEvent.text})}
                         onSubmitEditing={(event) => this.onSubmitName(event)}
                         style={styles.formInput}
                         /*value={this.state.username}*/ />
@@ -74,7 +75,7 @@ class LoginView extends Component {
     _onLongPress() {
         Alert.alert(
                     'LongPress Alert!',
-                    'Don\'t Press Long Time!',
+                    // this.state.username,
                     [
                       {text: 'OK', onPress: () => console.log('OK Pressed!')},
 //                      {text: 'OK', onPress: () => {this.onSubmitPressed()}},

@@ -1,3 +1,7 @@
 rootProject.name = 'SignIn_Demo'
 
 include ':app'
+//include ':cordovaplugin'
+//project(':cordovaplugin').projectDir= new File(rootProject.projectDir, '../node_modules/react-native-cordova-plugin/framework/android')
+//include ':@remobile/react-native-camera'
+//project(':@remobile/react-native-camera').projectDir = new File(rootProject.projectDir, '../node_modules/@remobile/react-native-camera/android')

@@ -16,13 +16,14 @@ class WeatherProject extends Component {
         		super(props);
         		this.state = {
         		    zip: '',
-                    forecast: null
+                forecast: null
         		};
         	}
 
     _handleTextChange(event) {
             var zip = event.nativeEvent.text;
             this.setState({zip: zip});
+						// Fetching Data from the Web
 
             fetch('http://api.openweathermap.org/data/2.5/weather?q=' + zip + '&units=imperial&APPID=' + API_KEY)
                 .then((response) => response.json())
@@ -63,7 +64,7 @@ class WeatherProject extends Component {
                         <TextInput
                             style={[styles.zipCode, styles.input]}
                             returnKeyType='none'
-//                            onSubmitEditing={(event) => this._handleTextChange(event)}
+//                          onSubmitEditing={(event) => this._handleTextChange(event)}
                             onChange={(event) => this._handleTextChange(event)}
                             value={this.state.zip}
                         />
